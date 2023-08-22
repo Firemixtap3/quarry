@@ -319,7 +319,8 @@ while true do
 	dropInChest()
 	
 	if errorcode ~= FULLINV then
-		break
+		goToOrigin()
+		dropInChest()
 	end
 end
 
