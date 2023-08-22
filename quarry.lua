@@ -78,7 +78,7 @@ function dropInChest()
 			end
 			break
 		else 
-			moves += 1
+			moves = moves + 1
 			if moves <= 3 then
 				turtle.turnLeft()
 			else
