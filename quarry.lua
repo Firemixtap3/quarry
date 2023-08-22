@@ -57,7 +57,7 @@ function dropInChest()
 	local success, data = turtle.inspect()
 	
 	if success then
-		if data.name == "minecraft:chest" then
+		if data.name == "minecraft:chest" or data.name == "ironchests:iron_chest" or data.name == "ironchests:gold_chest" or data.name == "ironchests:copper_chest" or or data.name == "ironchests:diamond_chest"then
 		
 			out("Dropping items in chest")
 			
@@ -108,7 +108,7 @@ function refuel()
 		
 		item = turtle.getItemDetail()
 		if item and
-				item.name == "minecraft:coal" and
+				(item.name == "minecraft:coal" or item.name == "minecraft:coal_block") and
 				(CHARCOALONLY == false or item.damage == 1) and
 				turtle.refuel(1) then
 			return true
