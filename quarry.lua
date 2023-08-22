@@ -52,9 +52,10 @@ function out(s)
 end
 
 function dropInChest()
-	while true do
+	local moves = 0
+	local bool = true
+	while bool do
 		local success, data = turtle.inspect()
-		local moves = 0
 	
 		if success then
 			out (data.name)
@@ -81,7 +82,8 @@ function dropInChest()
 			if moves <= 3 then
 				turtle.turnLeft()
 			else
-				break
+				bool = false
+				goToOrigin()
 			end
 		end
 	end
