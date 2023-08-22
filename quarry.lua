@@ -52,35 +52,39 @@ function out(s)
 end
 
 function dropInChest()
-	turtle.turnLeft()
+	while true do
+		local success, data = turtle.inspect()
+		local moves = 0
 	
-	local success, data = turtle.inspect()
-	
-	if success then
-		out (data.name)
-		if data.name == "minecraft:chest" or data.name == "ironchests:iron_chest" or data.name == "ironchests:gold_chest" or data.name == "ironchests:copper_chest" or data.name == "ironchests:diamond_chest"then
-		
-			out("Dropping items in chest")
+		if success then
+			out (data.name)
+			if data.name == "minecraft:chest" or data.name == "ironchests:iron_chest" or data.name == "ironchests:gold_chest" or data.name == "ironchests:copper_chest" or data.name == "ironchests:diamond_chest"then
 			
-			for i=1, 16 do
-				turtle.select(i)
+				out("Dropping items in chest")
 				
-				data = turtle.getItemDetail()
-				
-				if data ~= nil and
-						(data.name == "minecraft:coal" and CHARCOALONLY == false) == false and
-						(data.damage == nil or data.name .. data.damage ~= "minecraft:coal1") then
-
-					turtle.drop()
+				for i=1, 16 do
+					turtle.select(i)
+					
+					data = turtle.getItemDetail()
+					
+					if data ~= nil and
+							(data.name == "minecraft:coal" and CHARCOALONLY == false) == false and
+							(data.damage == nil or data.name .. data.damage ~= "minecraft:coal1") then
+	
+						turtle.drop()
+					end
 				end
 			end
+			break
+		else 
+			moves += 1
+			if moves <= 3 then
+				turtle.turnLeft()
+			else
+				break
+			end
 		end
-	else 
-		out ("no chest was identified")
 	end
-	
-	turtle.turnRight()
-	
 end
 
 function goDown()
