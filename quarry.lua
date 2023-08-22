@@ -74,6 +74,8 @@ function dropInChest()
 				end
 			end
 		end
+	else 
+		out ("no chest was identified")
 	end
 	
 	turtle.turnRight()
@@ -130,6 +132,8 @@ function moveH()
 		
 		if inv.isInventoryFull() then
 			out("Full inventory!")
+			out ("attempting to dorp in chest")
+			dropInChest()
 			return FULLINV  
 		end
 	end
