@@ -288,6 +288,10 @@ function mainloop()
 		end
 		
 		goToOrigin()
+
+		if errorcode ~= FULLINV then
+			dropInChest()
+		end
 		
 		for i=1, 3 do
 			t.digDown()
@@ -319,8 +323,7 @@ while true do
 	dropInChest()
 	
 	if errorcode ~= FULLINV then
-		goToOrigin()
-		dropInChest()
+		break
 	end
 end
 
