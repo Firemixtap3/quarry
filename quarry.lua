@@ -57,6 +57,7 @@ function dropInChest()
 	local success, data = turtle.inspect()
 	
 	if success then
+		out (data.name)
 		if data.name == "minecraft:chest" or data.name == "ironchests:iron_chest" or data.name == "ironchests:gold_chest" or data.name == "ironchests:copper_chest" or data.name == "ironchests:diamond_chest"then
 		
 			out("Dropping items in chest")
